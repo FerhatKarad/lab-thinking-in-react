@@ -1,10 +1,10 @@
-import React from 'react';
 import { useState } from 'react';
 import jsonData from './../../data.json';
 import ProductTable from './ProductTable';
-import SearchBar from './SearchBar';
+import SearchBar from './components/SearchBar';
 
-export default function FilterableProductTable() {
+function FilterableProductTable() {
+
   const [products, setProducts] = useState(jsonData);
   const [filter, setFilter] = useState('')
   const [checked, setChecked] = useState(false)
@@ -28,15 +28,17 @@ export default function FilterableProductTable() {
 
 
   return (
-    <div>
+    <>
       <h1> Iron Store</h1>
-      <SearchBar
+      <SearchBar 
         filter={filter}
         checked={checked}
         searchHandlerProp={searchHandler}
         checkedHandlerProp={checkedHandler}
       />
       <ProductTable filteredProp={filtered} products={products} />
-    </div>
+    </>
   );
 }
+
+export default FilterableProductTable;
